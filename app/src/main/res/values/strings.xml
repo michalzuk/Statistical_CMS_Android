@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Horton</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_mail_hint">Login</string>
+    <string name="login_button">Login</string>
+    <string name="registration_button">Create new account</string>
 </resources>
