@@ -4,4 +4,6 @@
     <string name="login_mail_hint">Login</string>
     <string name="login_button">Login</string>
     <string name="registration_button">Create new account</string>
+    <string name="email_required">Email address is required</string>
+    <string name="password_required">Password is required</string>
 </resources>
