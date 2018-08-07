@@ -4,9 +4,13 @@
     <string name="login_mail_hint">E-mail</string>
     <string name="login_button">Login</string>
     <string name="registration_button">Create new account</string>
-    <string name="email_required">Email address is required</string>
+    <string name="error_email_required">Email address is required</string>
     <string name="password_required">Password is required</string>
     <string name="login_username">Username</string>
     <string name="back_to_login_screen">Back to login screen</string>
     <string name="create_new_account">Create a new account</string>
+    <string name="something_went_wrong">Something went wrong..</string>
+    <string name="error_email_invalid">Incorrect email address</string>
+    <string name="password_length_incorrect">Your password isn\'t strong enough</string>
+    <string name="username_length_incorrect">Username is incorrect</string>
 </resources>
