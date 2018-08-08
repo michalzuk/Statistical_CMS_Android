@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import io.michalzuk.horton.activities.MainActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     private RelativeLayout loginLayout;
