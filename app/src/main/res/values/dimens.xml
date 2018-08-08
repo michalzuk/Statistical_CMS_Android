@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="top_margin_login_buttons">10dp</dimen>
+    <dimen name="standard_side_margin">8dp</dimen>
+    <dimen name="standard_vertival_margin">15dp</dimen>
 </resources>

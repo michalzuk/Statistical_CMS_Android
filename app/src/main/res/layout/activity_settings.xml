@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".activities.SettingsActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="20dp"
+        android:paddingLeft="@dimen/standard_side_margin"
+        android:paddingTop="@dimen/standard_vertival_margin"/>
 </android.support.constraint.ConstraintLayout>

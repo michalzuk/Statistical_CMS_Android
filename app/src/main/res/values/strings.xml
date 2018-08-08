@@ -15,4 +15,12 @@
     <string name="username_length_incorrect">Username is incorrect</string>
     <string name="enter_email_address">Enter email address</string>
     <string name="enter_password">Enter password</string>
+    <string name="api_credentials">API Credentials</string>
+    <string name="general_settings">General</string>
+    <string name="user_display_name">Your name</string>
+    <string name="credentials_api_login">Login</string>
+    <string name="credentials_api_key">API Key</string>
+    <string name="api_credentials_domain">Domain</string>
+    <string name="api_credentials_password">Password</string>
+    <string name="email_required">Email is required</string>
 </resources>
