@@ -1,4 +1,4 @@
-package io.michalzuk.horton;
+package io.michalzuk.horton.activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import io.michalzuk.horton.activities.MainActivity;
+import io.michalzuk.horton.R;
 
 public class LoginActivity extends AppCompatActivity {
 

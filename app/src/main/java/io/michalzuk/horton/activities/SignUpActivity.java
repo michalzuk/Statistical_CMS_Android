@@ -1,4 +1,4 @@
-package io.michalzuk.horton;
+package io.michalzuk.horton.activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -18,6 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+
+import io.michalzuk.horton.R;
+import io.michalzuk.horton.models.User;
 
 public class SignUpActivity extends AppCompatActivity {
 
