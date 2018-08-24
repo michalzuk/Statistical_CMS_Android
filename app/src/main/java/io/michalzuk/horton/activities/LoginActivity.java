@@ -17,13 +17,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 import io.michalzuk.horton.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     private RelativeLayout loginLayout;
     private FirebaseAuth firebaseAuth;
-    private Button loginButton, registrationButton;
     private ProgressBar loginProgressBar;
     private EditText editTextLoginEmail, editTextLoginPassword;
 
@@ -34,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginLayout = findViewById(R.id.activity_login);
         firebaseAuth = FirebaseAuth.getInstance();
-        loginButton = findViewById(R.id.login_button);
-        registrationButton = findViewById(R.id.registration_button);
+        Button loginButton = findViewById(R.id.login_button);
+        Button registrationButton = findViewById(R.id.registration_button);
         loginProgressBar = findViewById(R.id.login_progressbar);
         loginProgressBar.setVisibility(View.INVISIBLE);
         editTextLoginEmail = findViewById(R.id.login_mail);
@@ -73,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Snackbar.make(loginLayout, task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
+                                    Snackbar.make(loginLayout, Objects.requireNonNull(task.getException()).getMessage(), Snackbar.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -81,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         registrationButton.setOnClickListener(new View.OnClickListener() {
-            Intent registrationIntent = new Intent(LoginActivity.this, SignUpActivity.class);
+            final Intent registrationIntent = new Intent(LoginActivity.this, SignUpActivity.class);
 
             @Override
             public void onClick(View view) {
