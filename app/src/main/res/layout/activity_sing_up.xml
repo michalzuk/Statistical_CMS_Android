@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
         app:srcCompat="@android:drawable/btn_star"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/todo" />
 
     <EditText
         android:id="@+id/login_username"
