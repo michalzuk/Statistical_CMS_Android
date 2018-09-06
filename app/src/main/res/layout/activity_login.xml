@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_login"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity1">
 
     <ImageView
         android:id="@+id/imageView"
@@ -51,21 +51,31 @@
         android:layout_marginVertical="20dp"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/registration_button"
+    <TextView
+        android:id="@+id/sign_up_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:gravity="right"
+        android:padding="10dp"
+        android:text="@string/registration_button"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:background="@color/colorAccent"
-        android:text="@string/registration_button"
-        android:textColor="@color/white" />
+        android:layout_above="@+id/login_button"
+        android:foregroundGravity="center_vertical|center"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/registration_button"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:background="@color/lightGrey"
         android:text="@string/login_button"

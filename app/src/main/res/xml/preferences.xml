@@ -29,10 +29,9 @@
             android:key="pref_key_credentials_api_key"
             android:title="@string/credentials_api_key" />
 
-        <EditTextPreference
-            android:key="pref_key_credentials_password"
-            android:title="@string/api_credentials_password"
-            android:password="true"/>
+        <Preference
+            android:key="pref_key_sign_out"
+            android:title="Sign Out"/>
 
     </PreferenceCategory>
 </PreferenceScreen>
