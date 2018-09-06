@@ -25,6 +25,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     override fun onPreferenceTreeClick(preference: Preference?): Boolean {
         when (preference) {
             preferenceManager.findPreference("pref_key_sign_out") -> {
+                mAuth.signOut()
                 startActivity(Intent(this.context, LoginActivity::class.java))
             }
             else -> Log.e("XXX", "NULL")
