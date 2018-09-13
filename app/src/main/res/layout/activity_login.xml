@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_login"
-    tools:context=".activities.LoginActivity1">
+    tools:context=".activities.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -61,7 +61,7 @@
         android:padding="10dp"
         android:text="@string/registration_button"
         android:textColor="@color/colorAccent"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/google_sign_in"

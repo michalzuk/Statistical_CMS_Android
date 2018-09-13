@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
-    lateinit var mDatabase : DatabaseReference
+    private lateinit var mDatabase : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -16,8 +15,8 @@ import kotlinx.android.synthetic.main.activity_sing_up.*
 
 class RegisterActivity : AppCompatActivity() {
 
-    val mAuth = FirebaseAuth.getInstance()
-    lateinit var mDatabase: DatabaseReference
+    private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var mDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,9 +27,9 @@ class RegisterActivity : AppCompatActivity() {
         mDatabase = FirebaseDatabase.getInstance().getReference("Names")
 
 
-        createNewAccountButton.setOnClickListener(View.OnClickListener { view ->
+        createNewAccountButton.setOnClickListener { view ->
             register()
-        })
+        }
     }
 
     private fun register() {
@@ -38,25 +37,25 @@ class RegisterActivity : AppCompatActivity() {
         val passwordText = findViewById<View>(R.id.login_password) as EditText
         val usernameText = findViewById<View>(R.id.login_username) as EditText
 
-        var email = emailText.text.toString()
-        var password = passwordText.text.toString()
-        var username = usernameText.text.toString()
+        val email = emailText.text.toString()
+        val password = passwordText.text.toString()
+        val username = usernameText.text.toString()
 
         if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
             Snackbar.make(activity_sign_up, "XXX", Snackbar.LENGTH_LONG).show()
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, OnCompleteListener { task ->
+                    .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user = mAuth.currentUser
-                            val uid = user!!.uid.toString()
+                            val uid = user!!.uid
                             mDatabase.child(uid).child("Name").setValue(username)
                             Snackbar.make(activity_sign_up, "XXX", Snackbar.LENGTH_LONG).show()
                             startActivity(Intent(this, MainActivity::class.java))
                         } else {
                             Snackbar.make(activity_sign_up, "XXX", Snackbar.LENGTH_LONG).show()
                         }
-                    })
+                    }
         }
     }
 }

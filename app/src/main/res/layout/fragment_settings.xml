@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_22"
             android:hint="@string/credentials_domain"
+            android:inputType="text"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_22"
             android:hint="@string/credentials_username"
+            android:inputType="text"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
@@ -46,6 +48,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_22"
             android:hint="@string/credentials_api_key"
+            android:inputType="textUri"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"/>
     </android.support.v7.widget.LinearLayoutCompat>
