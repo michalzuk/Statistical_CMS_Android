@@ -1,50 +1,43 @@
 package io.michalzuk.horton.fragments
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.v7.preference.Preference
-import android.support.v7.preference.PreferenceFragmentCompat
-import android.support.v7.preference.R.attr.key
-import android.util.Log
+import android.os.Handler
+import android.support.design.widget.Snackbar
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import butterknife.BindView
 import com.google.firebase.auth.FirebaseAuth
 import io.michalzuk.horton.R
 import io.michalzuk.horton.activities.LoginActivity
+import kotlinx.android.synthetic.main.fragment_settings.*
+import io.michalzuk.horton.activities.MainActivity
+import kotlinx.android.synthetic.main.activity_login.*
 
-class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+
+class SettingsFragment : Fragment() {
 
     val mAuth = FirebaseAuth.getInstance()
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        addPreferencesFromResource(R.xml.preferences)
-        val signOut = preferenceScreen.findPreference("pref_key_sign_out")
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
-    override fun onPreferenceTreeClick(preference: Preference?): Boolean {
-        when (preference) {
-            preferenceManager.findPreference("pref_key_sign_out") -> {
-                mAuth.signOut()
-                startActivity(Intent(this.context, LoginActivity::class.java))
-            }
-            else -> Log.e("XXX", "NULL")
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        return true
+
+
+        sign_out_button.setOnClickListener(View.OnClickListener { view ->
+            mAuth.signOut()
+            startActivity(Intent(activity, LoginActivity::class.java))
+            Snackbar.make(activity_login, "XXX", Snackbar.LENGTH_SHORT).show()
+        })
     }
-
-    override fun onResume() {
-        super.onResume()
-        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onSharedPreferenceChanged(p0: SharedPreferences?, p1: String?) {
-
-        when (key) {
-
-        }
-    }
-
-
 }
+
