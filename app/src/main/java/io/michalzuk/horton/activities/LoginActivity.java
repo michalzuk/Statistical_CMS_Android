@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 import io.michalzuk.horton.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -26,69 +28,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText editTextLoginEmail, editTextLoginPassword;
 
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login);
-//        loginLayout = findViewById(R.id.activity_login);
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        Button loginButton = findViewById(R.id.login_button);
-//        Button registrationButton = findViewById(R.id.registration_button);
-//        loginProgressBar = findViewById(R.id.login_progressbar);
-//        loginProgressBar.setVisibility(View.INVISIBLE);
-//        editTextLoginEmail = findViewById(R.id.login_mail);
-//        editTextLoginPassword = findViewById(R.id.login_password);
-//        firebaseAuth = FirebaseAuth.getInstance();
-//
-//
-//        loginButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String email = editTextLoginEmail.getText().toString().trim();
-//                String password = editTextLoginPassword.getText().toString().trim();
-//
-//                if (TextUtils.isEmpty(email)) {
-//                    Snackbar.make(loginLayout, getString(R.string.enter_email_address), Snackbar.LENGTH_SHORT).show();
-//                    editTextLoginEmail.requestFocus();
-//                    return;
-//                }
-//
-//                if (TextUtils.isEmpty(password)) {
-//                    Snackbar.make(loginLayout, getString(R.string.enter_password), Snackbar.LENGTH_SHORT).show();
-//                    editTextLoginPassword.requestFocus();
-//                    return;
-//                }
-//
-//                loginProgressBar.setVisibility(View.VISIBLE);
-//
-//                firebaseAuth.signInWithEmailAndPassword(email, password)
-//                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                loginProgressBar.setVisibility(View.GONE);
-//                                if (task.isSuccessful()) {
-//                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                                    startActivity(intent);
-//                                    finish();
-//                                } else {
-//                                    Snackbar.make(loginLayout, Objects.requireNonNull(task.getException()).getMessage(), Snackbar.LENGTH_LONG).show();
-//                                }
-//                            }
-//                        });
-//            }
-//        });
-//
-//        registrationButton.setOnClickListener(new View.OnClickListener() {
-//            final Intent registrationIntent = new Intent(LoginActivity.this, SignUpActivity.class);
-//
-//            @Override
-//            public void onClick(View view) {
-//                LoginActivity.this.startActivity(registrationIntent);
-//            }
-//        });
-//    }
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.registration_button).setOnClickListener(this);
         findViewById(R.id.login_button).setOnClickListener(this);
 
+        loginLayout = findViewById(R.id.activity_login);
         loginProgressBar = findViewById(R.id.login_progressbar);
         editTextLoginEmail = findViewById(R.id.login_email);
         editTextLoginPassword = findViewById(R.id.login_password);
@@ -134,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         } else {
-                            Snackbar.make(loginLayout, task.getException().getMessage(), Snackbar.LENGTH_SHORT).show();
+                            Snackbar.make(loginLayout, Objects.requireNonNull(task.getException()).getMessage(), Snackbar.LENGTH_SHORT).show();
                         }
             }
         });
