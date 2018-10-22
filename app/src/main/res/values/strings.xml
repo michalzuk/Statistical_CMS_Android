@@ -16,8 +16,12 @@
     <string name="enter_email_address">Enter email address</string>
     <string name="enter_password">Enter password</string>
     <string name="api_credentials">API Credentials</string>
+    <string name="credentials">API Credentials</string>
     <string name="general_settings">General</string>
     <string name="user_display_name">Your name</string>
+    <string name="credentials_username">Username</string>
+    <string name="credentials_domain">Domain</string>
+    <string name="credentials_password">Password</string>
     <string name="credentials_api_login">Login</string>
     <string name="credentials_api_key">API Key</string>
     <string name="api_credentials_domain">Domain</string>
@@ -48,4 +52,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="save_credentials">Save Credentials</string>
 </resources>
