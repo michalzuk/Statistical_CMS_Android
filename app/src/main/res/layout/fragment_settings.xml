@@ -59,6 +59,15 @@
         android:paddingBottom="48dp">
 
         <Button
+            android:id="@+id/save_credentials_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/sign_out_button"
+            android:background="@color/colorAccent"
+            android:text="@string/save_credentials"
+            android:textColor="@color/white" />
+
+        <Button
             android:id="@+id/sign_out_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -33,6 +33,14 @@ class SettingsFragment : Fragment() {
             mAuth.signOut()
             startActivity(Intent(activity, LoginActivity::class.java))
         }
+
+        save_credentials_button.setOnClickListener { view ->
+            saveCredentials();
+        }
+    }
+
+    private fun saveCredentials() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 

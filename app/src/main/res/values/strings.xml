@@ -47,4 +47,5 @@
     <string name="pref_key_api">pref_key_credentials_api_key</string>
     <string name="pref_sign_out">pref_key_sign_out</string>
     <string name="sign_out">Sign Out</string>
+    <string name="save_credentials">Save credentials</string>
 </resources>
