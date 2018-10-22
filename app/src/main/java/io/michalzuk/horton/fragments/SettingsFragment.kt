@@ -32,7 +32,6 @@ class SettingsFragment : Fragment() {
         sign_out_button.setOnClickListener { view ->
             mAuth.signOut()
             startActivity(Intent(activity, LoginActivity::class.java))
-            Snackbar.make(activity_login, "XXX", Snackbar.LENGTH_SHORT).show()
         }
     }
 }
