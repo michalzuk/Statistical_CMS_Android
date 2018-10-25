@@ -1,4 +1,4 @@
 package io.michalzuk.horton.models
 
-class Credentials constructor(val domain: String, val  username: String,
-                              val apiKey: String)
+data class Credentials (val domain: String? = null, val apiKey: String? = null,
+                        val username: String? = null)
