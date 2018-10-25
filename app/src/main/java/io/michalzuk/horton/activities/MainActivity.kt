@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                val result = snapshot.child("Name").toString()
+                snapshot.child("Name").toString()
             }
         })
     }

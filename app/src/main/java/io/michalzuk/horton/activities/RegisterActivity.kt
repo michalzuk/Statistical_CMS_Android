@@ -34,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
         registerLayout = findViewById(R.id.activity_sign_up)
 
 
-        createNewAccountButton.setOnClickListener { view ->
+        createNewAccountButton.setOnClickListener {
             registerUser()
         }
     }
@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
         val email = login_mail.text.toString().trim()
         val password = login_password.text.toString().trim()
 
-        login_progressbar.setVisibility(View.VISIBLE)
+        login_progressbar.visibility = View.VISIBLE
 
         if (email.isEmpty()) {
             login_mail.error = "Email is required"

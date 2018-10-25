@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
 
 
 
-        sign_out_button.setOnClickListener { view ->
+        sign_out_button.setOnClickListener {
             mAuth.signOut()
             startActivity(Intent(activity, LoginActivity::class.java))
         }
