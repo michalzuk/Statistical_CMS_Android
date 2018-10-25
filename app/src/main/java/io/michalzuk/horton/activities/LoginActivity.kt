@@ -23,17 +23,18 @@ class LoginActivity : AppCompatActivity() {
         val loginButton = findViewById<View>(R.id.login_button) as Button
         val registerButton = findViewById<View>(R.id.sign_up_text_view) as TextView
 
-        loginButton.setOnClickListener { view ->
+        loginButton.setOnClickListener {
             login()
         }
 
-        registerButton.setOnClickListener { view ->
+        registerButton.setOnClickListener {
             register()
         }
     }
 
 
     private fun login() {
+        login_progressbar.visibility = View.VISIBLE
         val emailTxt = findViewById<View>(R.id.login_mail) as EditText
         val passwordTxt = findViewById<View>(R.id.login_password) as EditText
 
@@ -46,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+                            login_progressbar.visibility = View.GONE
                             startActivity(Intent(this, MainActivity::class.java))
                             Snackbar.make(activity_login, "XXX", Snackbar.LENGTH_SHORT).show()
                         } else {
@@ -57,6 +59,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun register() {
         startActivity(Intent(this, RegisterActivity::class.java))
+    }
 
+    override fun onStart() {
+        super.onStart()
+
+        if (mAuth.currentUser != null) {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 }

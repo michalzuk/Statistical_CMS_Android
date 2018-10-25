@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_password"
         android:layout_marginVertical="20dp"
+        android:visibility="invisible"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:gravity="right"
+        android:gravity="end"
         android:padding="10dp"
         android:text="@string/registration_button"
         android:textColor="@color/colorAccent"
