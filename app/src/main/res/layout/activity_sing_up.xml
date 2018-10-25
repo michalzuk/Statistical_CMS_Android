@@ -17,29 +17,17 @@
         app:srcCompat="@android:drawable/btn_star"
         android:contentDescription="@string/todo" />
 
-    <EditText
-        android:id="@+id/login_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="170dp"
-        android:background="@drawable/edit_text_style"
-        android:ems="10"
-        android:hint="@string/login_username"
-        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/login_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_username"
+        android:layout_marginTop="170dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:hint="@string/login_mail_hint"
-        android:inputType="textPersonName"
-        android:layout_marginTop="@dimen/top_margin_login_buttons"/>
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/login_password"

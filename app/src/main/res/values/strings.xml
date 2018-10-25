@@ -49,4 +49,7 @@
     <string name="sign_out">Sign Out</string>
     <string name="save_credentials">Save credentials</string>
     <string name="credentials_added">Credentials added successfully</string>
+    <string name="already_registered">Such a user already exist</string>
+    <string name="registration_canceled">Action canceled</string>
+    <string name="successfully_registred">You have been successfully registered</string>
 </resources>
