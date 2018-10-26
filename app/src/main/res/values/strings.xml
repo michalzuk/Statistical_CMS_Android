@@ -52,4 +52,7 @@
     <string name="already_registered">Such a user already exist</string>
     <string name="registration_canceled">Action canceled</string>
     <string name="successfully_registred">You have been successfully registered</string>
+    <string name="action_canceled">Action canceled</string>
+    <string name="exception_thrown">Exception han been thrown</string>
+    <string name="will_be_logged_in">Authentication completed. You\'ll be logged in</string>
 </resources>

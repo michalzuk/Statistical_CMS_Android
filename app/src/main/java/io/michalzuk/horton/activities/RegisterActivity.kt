@@ -1,5 +1,6 @@
 package io.michalzuk.horton.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -43,36 +44,48 @@ class RegisterActivity : AppCompatActivity() {
         val email = login_mail.text.toString().trim()
         val password = login_password.text.toString().trim()
 
-        login_progressbar.visibility = View.VISIBLE
+        validateRegistration(email, password)
+        sign_up_progressbar.visibility = View.VISIBLE
 
-        if (email.isEmpty()) {
-            login_mail.error = "Email is required"
-            login_mail.requestFocus()
-        } else if (password.isEmpty()) {
-            login_password.error = "Password is required"
-            login_password.requestFocus()
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            login_password.error = "Please enter a valid email"
-            login_mail.requestFocus()
-        } else if (password.length < 6) {
-            login_password.error = "Minimum password length is equal to 6"
-            login_password.requestFocus()
-        } else {
+    }
 
-            this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task: Task<AuthResult> ->
-                if (task.isSuccessful) {
-                    finish()
-                    Snackbar.make(registerLayout!!, getString(R.string.successfully_registred), Snackbar.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainActivity::class.java))
-                } else if (task.isCanceled) {
-                    Snackbar.make(registerLayout!!, getString(R.string.registration_canceled), Snackbar.LENGTH_SHORT).show()
-                } else if (task.exception is FirebaseAuthUserCollisionException) {
-                    Snackbar.make(registerLayout!!, getString(R.string.already_registered), Snackbar.LENGTH_SHORT).show()
-                } else {
-                    Snackbar.make(registerLayout!!, getString(R.string.something_went_wrong), Snackbar.LENGTH_SHORT).show()
+    private fun validateRegistration(email: String, password: String) {
+        when {
+            email.isEmpty() -> {
+                login_mail.error = "Email is required"
+                login_mail.requestFocus()
+            }
+            password.isEmpty() -> {
+                login_password.error = "Password is required"
+                login_password.requestFocus()
+            }
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                login_password.error = "Please enter a valid email"
+                login_mail.requestFocus()
+            }
+            password.length < 6 -> {
+                login_password.error = "Minimum password length is equal to 6"
+                login_password.requestFocus()
+            }
+            else -> this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task: Task<AuthResult> ->
+                when {
+                    task.isSuccessful -> {
+                        finish()
+                        deactivateScreen(getString(R.string.successfully_registred))
+                        startActivity(Intent(this, MainActivity::class.java))
+                    }
+                    task.isCanceled -> deactivateScreen(getString(R.string.action_canceled))
+                    task.exception is FirebaseAuthUserCollisionException -> deactivateScreen(getString(R.string.exception_thrown))
+                    else -> deactivateScreen(getString(R.string.something_went_wrong))
                 }
             }
-
         }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun deactivateScreen(snackBarString : String) {
+        create_new_account.setBackgroundColor(R.color.lightGrey)
+        sign_up_progressbar.visibility = View.GONE
+        Snackbar.make(registerLayout!!, snackBarString, Snackbar.LENGTH_SHORT).show()
     }
 }
