@@ -4,7 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/fragment_charts"
     tools:context=".fragments.ChartsFragment">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
     <org.eazegraph.lib.charts.BarChart
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,14 +35,13 @@
         app:egBarWidth="40dp"
         app:egLegendHeight="40dp"/>
 
-    <org.eazegraph.lib.charts.PieChart
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/piechart"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:padding="8dp"
         app:egLegendTextSize="18sp"
         app:egUsePieRotation="true"
-        app:egValueTextSize="36sp"/>
+        app:egValueTextSize="36sp" />
 
 </LinearLayout>

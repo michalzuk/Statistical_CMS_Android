@@ -18,6 +18,7 @@ import com.google.firebase.database.*
 import io.michalzuk.horton.R
 import io.michalzuk.horton.activities.LoginActivity
 import io.michalzuk.horton.models.Credentials
+import io.michalzuk.horton.services.GlobalStorage
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
@@ -56,16 +57,18 @@ class SettingsFragment : Fragment() {
 
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
+                Log.w("p0", "loadPost:onCancelled", p0.toException())
                 Snackbar.make(view!!.findViewById(R.id.fragment_settings), R.string.something_went_wrong, Snackbar.LENGTH_SHORT).show()
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val credentials = dataSnapshot.child(id).getValue(Credentials::class.java)
-                if (dataSnapshot.child(id).hasChildren())
-                    Log.i("XDDDD: ", "XDDDD")
                 credentials_api_key.setText(credentials?.apiKey)
                 credentials_username.setText(credentials?.username)
                 credentials_domain.setText(credentials?.domain)
+                GlobalStorage.setApiKey(credentials?.apiKey!!)
+                GlobalStorage.setUser(credentials.username!!)
+                GlobalStorage.setDomain(credentials.domain!!)
             }
 
         })
