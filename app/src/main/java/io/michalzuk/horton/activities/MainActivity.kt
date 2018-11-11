@@ -31,21 +31,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Log.w("p0", "loadPost:onCancelled", p0.toException())
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val credentials = snapshot.child(id).getValue(Credentials::class.java)
-                snapshot.child("Name").toString()
-                GlobalStorage.setDomain(credentials?.domain!!)
-                GlobalStorage.setUser(credentials.username!!)
-                GlobalStorage.setApiKey(credentials.apiKey!!)
-            }
-        })
-
-
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         container.adapter = mSectionsPagerAdapter
 
@@ -73,6 +58,8 @@ class MainActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
+
 
 
     /**

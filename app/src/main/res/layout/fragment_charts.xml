@@ -11,19 +11,9 @@
         android:id="@+id/tv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/tv3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:gravity="center"
+        android:textSize="@dimen/font_16"
+        android:text="@string/best_selling_products" />
 
     <org.eazegraph.lib.charts.BarChart
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -35,7 +25,16 @@
         app:egBarWidth="40dp"
         app:egLegendHeight="40dp"/>
 
-    <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/font_16"
+        android:text="@string/monthly_orders_status" />
+
+    <org.eazegraph.lib.charts.PieChart
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/piechart"
         android:layout_width="match_parent"
         android:layout_height="300dp"

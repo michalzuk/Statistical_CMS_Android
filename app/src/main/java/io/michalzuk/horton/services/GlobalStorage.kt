@@ -32,4 +32,8 @@ object GlobalStorage : Application() {
         this.apiKey = apiKey
     }
 
+    fun isAnyMissing(): Boolean {
+        return !(user.isEmpty() || domain.isEmpty() || apiKey.isEmpty())
+    }
+
 }

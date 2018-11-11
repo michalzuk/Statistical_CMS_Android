@@ -55,4 +55,15 @@
     <string name="action_canceled">Action canceled</string>
     <string name="exception_thrown">Exception han been thrown</string>
     <string name="will_be_logged_in">Authentication completed. You\'ll be logged in</string>
+    <string name="average_product_price">Average product price</string>
+    <string name="no_data">No data</string>
+    <string name="total_customers">Total customers amount</string>
+    <string name="best_selling_products">Best selling products</string>
+    <string name="monthly_orders_status">Monthly orders status</string>
+    <string name="server_info">Server Info:</string>
+    <string name="php_version">PHP Version:</string>
+    <string name="server_status">Server status:</string>
+    <string name="secure_connection">Secure Connection:</string>
+    <string name="mysql_version">MySQL Version:</string>
+    <string name="paying_customers">Paying customers</string>
 </resources>
