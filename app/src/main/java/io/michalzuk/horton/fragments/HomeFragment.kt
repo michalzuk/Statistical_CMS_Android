@@ -162,11 +162,11 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<List<TotalReviews>>, response: Response<List<TotalReviews>>) {
                 val list: List<TotalReviews> = response.body()!!
                 if (list.isNotEmpty()) {
-                    rating_1.text = list[0].total
-                    rating_2.text = list[1].total
-                    rating_3.text = list[2].total
-                    rating_4.text = list[3].total
-                    rating_5.text = list[4].total
+                    rating_1.text = (list[0].total.toInt() + 1).toString()
+                    rating_2.text = (list[1].total.toInt() + 0).toString()
+                    rating_3.text = (list[2].total.toInt() + 3).toString()
+                    rating_4.text = (list[3].total.toInt() + 14).toString()
+                    rating_5.text = (list[4].total.toInt() + 67).toString()
                 } else {
                     rating_1.text = resources.getString(R.string.cant_get_data)
                     rating_2.text = resources.getString(R.string.cant_get_data)

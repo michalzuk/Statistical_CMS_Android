@@ -27,7 +27,7 @@ interface WooCommerceMethods {
     fun getServerData(@Header("Authorization") authHeader: String)
             : Call<SystemStatus>
 
-    @GET("/wp-json/wc/v3/system_status")
+    @GET("/wp-json/wc/v3/reports/reviews/totals")
     fun getTotalReviews(@Header("Authorization") authHeader: String)
             : Call<List<TotalReviews>>
 }
