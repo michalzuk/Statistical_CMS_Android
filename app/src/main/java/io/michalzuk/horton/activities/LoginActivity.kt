@@ -10,7 +10,6 @@ import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import io.michalzuk.horton.R
 import kotlinx.android.synthetic.main.activity_login.*
-
 class LoginActivity : AppCompatActivity() {
 
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -42,8 +41,15 @@ class LoginActivity : AppCompatActivity() {
         val email = emailTxt.text.toString()
         val password = passwordTxt.text.toString()
 
-        if (email.isEmpty() || password.isEmpty()) {
-            Snackbar.make(activity_login, "XXX", Snackbar.LENGTH_LONG).show()
+        if (email.isEmpty() ) {
+            Snackbar.make(activity_login, R.string.field_cannot_be_empty, Snackbar.LENGTH_LONG)
+                    .show()
+            emailTxt.requestFocus()
+        }
+        else if (password.isEmpty()) {
+            Snackbar.make(activity_login, R.string.field_cannot_be_empty, Snackbar.LENGTH_LONG)
+                    .show()
+            passwordTxt.requestFocus()
         } else {
             deactivateScreen(getString(R.string.will_be_logged_in))
             mAuth.signInWithEmailAndPassword(email, password)
@@ -51,9 +57,9 @@ class LoginActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             startActivity(Intent(this, MainActivity::class.java))
                         } else {
-                            Snackbar.make(activity_login, "XXX", Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(activity_login, R.string.field_cannot_be_empty, Snackbar.LENGTH_LONG).show()
                         }
-                    }
+            }
         }
     }
 

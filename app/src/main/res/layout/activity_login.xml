@@ -9,25 +9,24 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        app:srcCompat="@android:drawable/btn_star"
+        android:layout_marginTop="150dp"
+        app:srcCompat="@drawable/horton_logo"
         android:contentDescription="@string/todo" />
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="320dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:hint="@string/login_mail_hint"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="156dp" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/login_password"
@@ -35,12 +34,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_email"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:hint="@string/login_password_hint"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:layout_marginTop="@dimen/top_margin_login_buttons"/>
 
     <ProgressBar
         android:id="@+id/login_progressbar"
@@ -48,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_password"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="10dp"
         android:visibility="invisible"
         android:layout_centerHorizontal="true" />
 

@@ -33,7 +33,7 @@ class RegisterActivity : AppCompatActivity() {
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Names")
         registerLayout = findViewById(R.id.activity_sign_up)
-
+        sign_up_progressbar.visibility = View.INVISIBLE
 
         createNewAccountButton.setOnClickListener {
             registerUser()
@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
                 login_password.error = "Please enter a valid email"
                 login_mail.requestFocus()
             }
-            password.length < 6 -> {
+            password.length < 8 -> {
                 login_password.error = "Minimum password length is equal to 6"
                 login_password.requestFocus()
             }
