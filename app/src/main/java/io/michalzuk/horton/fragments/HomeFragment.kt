@@ -47,9 +47,14 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val credentials = snapshot.child(id).getValue(Credentials::class.java)
                 snapshot.child("Name").toString()
-                GlobalStorage.setDomain(credentials?.domain!!)
-                GlobalStorage.setUser(credentials.username!!)
-                GlobalStorage.setApiKey(credentials.apiKey!!)
+//                if (GlobalStorage.getApiKey() != null ||
+//                        GlobalStorage.getDomain() != null ||
+//                        GlobalStorage.getUser() != null)
+                if (credentials != null) {
+                    GlobalStorage.setDomain(credentials?.domain!!)
+                    GlobalStorage.setUser(credentials.username!!)
+                    GlobalStorage.setApiKey(credentials.apiKey!!)
+                }
                 if (GlobalStorage.isAnyMissing()) {
                     val builder: Retrofit.Builder = Retrofit.Builder().baseUrl(GlobalStorage.getDomain())
                             .addConverterFactory(GsonConverterFactory.create())
@@ -83,7 +88,11 @@ class HomeFragment : Fragment() {
                     totalPrice += item.price.toInt()
                 }
                 val averagePrice = totalPrice / totalOrdersList.size
-                average_product_price_value.text = averagePrice.toString()
+                if (averagePrice > 0) {
+                    average_product_price_value.text = averagePrice.toString()
+                } else {
+                    average_product_price_value.text = resources.getString(R.string.cant_get_data)
+                }
 
             }
 
@@ -106,7 +115,11 @@ class HomeFragment : Fragment() {
                 for (item in list) {
                     customersAmount += item.total.toInt()
                 }
-                total_customers_value.text = customersAmount.toString()
+                if (customersAmount > 0) {
+                    total_customers_value.text = customersAmount.toString()
+                } else {
+                    total_customers_value.text = resources.getString(R.string.cant_get_data)
+                }
             }
         })
     }
@@ -125,8 +138,12 @@ class HomeFragment : Fragment() {
                 val list: List<AllCustomers> = response.body()!!
                 val percentOfPaying: Float = (((list[0].total.toFloat() +7) /
                         (list[1].total.toFloat() + 13)) * 100)
-                val percentOfPayingText = "$percentOfPaying %"
-                percent_paying_users_value.text = percentOfPayingText
+                if (percentOfPaying > 0) {
+                    val percentOfPayingText = "$percentOfPaying %"
+                    percent_paying_users_value.text = percentOfPayingText
+                } else {
+                    percent_paying_users_value.text = resources.getString(R.string.cant_get_data)
+                }
             }
         })
     }
@@ -138,17 +155,25 @@ class HomeFragment : Fragment() {
 
         callMethod.enqueue(object : Callback<List<TotalReviews>> {
             override fun onFailure(call: Call<List<TotalReviews>>, t: Throwable) {
+                Log.e("ERROR:", "LOG: $t")
                 Snackbar.make(view!!.findViewById(R.id.fragment_charts), R.string.something_went_wrong, Snackbar.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<List<TotalReviews>>, response: Response<List<TotalReviews>>) {
                 val list: List<TotalReviews> = response.body()!!
-                rating_1.text = list[0].total
-                rating_2.text = list[1].total
-                rating_3.text = list[2].total
-                rating_4.text = list[3].total
-                rating_5.text = list[4].total
-
+                if (list.isNotEmpty()) {
+                    rating_1.text = list[0].total
+                    rating_2.text = list[1].total
+                    rating_3.text = list[2].total
+                    rating_4.text = list[3].total
+                    rating_5.text = list[4].total
+                } else {
+                    rating_1.text = resources.getString(R.string.cant_get_data)
+                    rating_2.text = resources.getString(R.string.cant_get_data)
+                    rating_3.text = resources.getString(R.string.cant_get_data)
+                    rating_4.text = resources.getString(R.string.cant_get_data)
+                    rating_5.text = resources.getString(R.string.cant_get_data)
+                }
             }
         })
     }

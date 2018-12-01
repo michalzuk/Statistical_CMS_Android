@@ -67,4 +67,5 @@
     <string name="mysql_version">MySQL Version:</string>
     <string name="paying_customers">Paying customers</string>
     <string name="field_cannot_be_empty">Field cannot be empty</string>
+    <string name="cant_get_data">Can\'t get data</string>
 </resources>

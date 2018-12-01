@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.webkit.URLUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -75,10 +76,12 @@ class SettingsFragment : Fragment() {
                 credentials_api_key.setText(credentials?.apiKey)
                 credentials_username.setText(credentials?.username)
                 credentials_domain.setText(credentials?.domain)
-                GlobalStorage.setApiKey(credentials?.apiKey!!)
-                GlobalStorage.setUser(credentials.username!!)
-                GlobalStorage.setDomain(credentials.domain!!)
-                if (GlobalStorage.isAnyMissing()) {
+                if (credentials != null) {
+                    GlobalStorage.setApiKey(credentials.apiKey!!)
+                    GlobalStorage.setUser(credentials.username!!)
+                    GlobalStorage.setDomain(credentials.domain!!)
+                }
+                if (GlobalStorage.isAnyMissing() &&  URLUtil.isValidUrl(GlobalStorage.getDomain())) {
                     val builder: Retrofit.Builder = Retrofit.Builder().baseUrl(GlobalStorage.getDomain())
                             .addConverterFactory(GsonConverterFactory.create())
 

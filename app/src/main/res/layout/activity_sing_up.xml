@@ -27,7 +27,7 @@
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:hint="@string/login_mail_hint"
-        android:inputType="textPersonName" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/login_password"
