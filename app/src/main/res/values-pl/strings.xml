@@ -54,4 +54,5 @@
     <string name="paying_customers">Kupujący klienci</string>
     <string name="field_cannot_be_empty">Pole nie może być puste</string>
     <string name="action_canceled">Akcja anulowana</string>
+    <string name="total_reviews">Recenzje klientów</string>
 </resources>
