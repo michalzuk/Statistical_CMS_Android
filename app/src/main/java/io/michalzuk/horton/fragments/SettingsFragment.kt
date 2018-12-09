@@ -21,7 +21,7 @@ import io.michalzuk.horton.activities.LoginActivity
 import io.michalzuk.horton.models.Credentials
 import io.michalzuk.horton.models.SystemStatus
 import io.michalzuk.horton.services.GlobalStorage
-import io.michalzuk.horton.services.WooCommerceMethods
+import io.michalzuk.horton.services.WooCommerceRequests
 import kotlinx.android.synthetic.main.fragment_settings.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -113,7 +113,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun getServerData(mRetrofit: Retrofit, mAuthHeader: String) {
-        val methodCaller = mRetrofit.create(WooCommerceMethods::class.java)
+        val methodCaller = mRetrofit.create(WooCommerceRequests::class.java)
         val callAllProductsNames = methodCaller
                 .getServerData("Basic Y2tfZjI4MjUzOTBiZjI5NTkwNWZjYmY1Njk5ODhkYzc5NzgwYjIyZjg3Zjpjc19lMGM0ZjU1YWVkNzNkNGVlMjFiNGRiYjgzZTk5MmYwN2MwMDU1ZDE0")
 

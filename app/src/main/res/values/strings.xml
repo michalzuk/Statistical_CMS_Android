@@ -24,35 +24,22 @@
     <string name="credentials_password">Password</string>
     <string name="email_required">Email is required</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="navigation_feed">Your Feed</string>
     <string name="navigation_charts">Charts</string>
     <string name="contact_us">Contact us</string>
     <string name="slideshow">Slideshow</string>
     <string name="tools">Tools</string>
-    <string name="communicate">Communicate</string>
     <string name="todo">TODO</string>
-    <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_in_with_google">Sign in with Google</string>
-    <string name="pref_key_domain">pref_key_credentials_domain</string>
-    <string name="pref_key_login">pref_key_credentials_login</string>
-    <string name="pref_key_api">pref_key_credentials_api_key</string>
-    <string name="pref_sign_out">pref_key_sign_out</string>
     <string name="sign_out">Sign Out</string>
     <string name="save_credentials">Save credentials</string>
     <string name="credentials_added">Credentials added successfully</string>
     <string name="already_registered">Such a user already exist</string>
     <string name="registration_canceled">Action canceled</string>
     <string name="successfully_registred">You have been successfully registered</string>
-    <string name="action_canceled">Action canceled</string>
     <string name="exception_thrown">Exception han been thrown</string>
     <string name="will_be_logged_in">Authentication completed. You\'ll be logged in</string>
     <string name="average_product_price">Average product price</string>
@@ -67,4 +54,5 @@
     <string name="mysql_version">MySQL Version:</string>
     <string name="paying_customers">Paying customers</string>
     <string name="field_cannot_be_empty">Field cannot be empty</string>
+    <string name="action_canceled">action canceled</string>
 </resources>

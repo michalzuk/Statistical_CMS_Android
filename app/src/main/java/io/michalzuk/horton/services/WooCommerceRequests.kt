@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
 
-interface WooCommerceMethods {
+interface WooCommerceRequests {
 
     @GET("/wp-json/wc/v3/reports/orders/totals/")
     fun getTotalOrders (@Header("Authorization")  authHeader : String)
@@ -27,7 +27,7 @@ interface WooCommerceMethods {
     fun getServerData(@Header("Authorization") authHeader: String)
             : Call<SystemStatus>
 
-    @GET("/wp-json/wc/v3/system_status")
+    @GET("/wp-json/wc/v3/reports/reviews/totals")
     fun getTotalReviews(@Header("Authorization") authHeader: String)
             : Call<List<TotalReviews>>
 }

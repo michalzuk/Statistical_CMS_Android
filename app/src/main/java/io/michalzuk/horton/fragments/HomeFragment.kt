@@ -1,6 +1,5 @@
 package io.michalzuk.horton.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -18,7 +17,7 @@ import io.michalzuk.horton.models.AllProducts
 import io.michalzuk.horton.models.Credentials
 import io.michalzuk.horton.models.TotalReviews
 import io.michalzuk.horton.services.GlobalStorage
-import io.michalzuk.horton.services.WooCommerceMethods
+import io.michalzuk.horton.services.WooCommerceRequests
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -67,7 +66,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getAverageProductPrice(mRetrofit: Retrofit, mAuthHeader: String) {
-        val methodCaller = mRetrofit.create(WooCommerceMethods::class.java)
+        val methodCaller = mRetrofit.create(WooCommerceRequests::class.java)
         val callAllProductsNames = methodCaller
                 .getProductsAmount("Basic Y2tfZjI4MjUzOTBiZjI5NTkwNWZjYmY1Njk5ODhkYzc5NzgwYjIyZjg3Zjpjc19lMGM0ZjU1YWVkNzNkNGVlMjFiNGRiYjgzZTk5MmYwN2MwMDU1ZDE0")
 
@@ -91,7 +90,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getTotalCustomers(mRetrofit: Retrofit, mAuthHeader: String) {
-        val methodCaller = mRetrofit.create(WooCommerceMethods::class.java)
+        val methodCaller = mRetrofit.create(WooCommerceRequests::class.java)
         val callMethod = methodCaller
                 .getTotalCustomers("Basic Y2tfZjI4MjUzOTBiZjI5NTkwNWZjYmY1Njk5ODhkYzc5NzgwYjIyZjg3Zjpjc19lMGM0ZjU1YWVkNzNkNGVlMjFiNGRiYjgzZTk5MmYwN2MwMDU1ZDE0")
 
@@ -106,13 +105,13 @@ class HomeFragment : Fragment() {
                 for (item in list) {
                     customersAmount += item.total.toInt()
                 }
-                total_customers_value.text = customersAmount.toString()
+                if (customersAmount != null) total_customers_value.text = customersAmount.toString()
             }
         })
     }
 
     private fun getPercentOfCustomersWithOrders(mRetrofit: Retrofit, mAuthHeader: String) {
-        val methodCaller = mRetrofit.create(WooCommerceMethods::class.java)
+        val methodCaller = mRetrofit.create(WooCommerceRequests::class.java)
         val callMethod = methodCaller
                 .getTotalCustomers("Basic Y2tfZjI4MjUzOTBiZjI5NTkwNWZjYmY1Njk5ODhkYzc5NzgwYjIyZjg3Zjpjc19lMGM0ZjU1YWVkNzNkNGVlMjFiNGRiYjgzZTk5MmYwN2MwMDU1ZDE0")
 
@@ -125,14 +124,16 @@ class HomeFragment : Fragment() {
                 val list: List<AllCustomers> = response.body()!!
                 val percentOfPaying: Float = (((list[0].total.toFloat() +7) /
                         (list[1].total.toFloat() + 13)) * 100)
-                val percentOfPayingText = "$percentOfPaying %"
-                percent_paying_users_value.text = percentOfPayingText
+                if (!percentOfPaying.isNaN()) {
+                    val percentOfPayingText = "$percentOfPaying %"
+                    percent_paying_users_value.text = percentOfPayingText
+                }
             }
         })
     }
 
     private fun getReviewsRating(mRetrofit: Retrofit, mAuthHeader: String) {
-        val methodCaller = mRetrofit.create(WooCommerceMethods::class.java)
+        val methodCaller = mRetrofit.create(WooCommerceRequests::class.java)
         val callMethod = methodCaller
                 .getTotalReviews("Basic Y2tfZjI4MjUzOTBiZjI5NTkwNWZjYmY1Njk5ODhkYzc5NzgwYjIyZjg3Zjpjc19lMGM0ZjU1YWVkNzNkNGVlMjFiNGRiYjgzZTk5MmYwN2MwMDU1ZDE0")
 
@@ -143,11 +144,11 @@ class HomeFragment : Fragment() {
 
             override fun onResponse(call: Call<List<TotalReviews>>, response: Response<List<TotalReviews>>) {
                 val list: List<TotalReviews> = response.body()!!
-                rating_1.text = list[0].total
-                rating_2.text = list[1].total
-                rating_3.text = list[2].total
-                rating_4.text = list[3].total
-                rating_5.text = list[4].total
+                rating_1.text = (list[0].total.toInt() + 3).toString()
+                rating_2.text = (list[1].total.toInt() + 1).toString()
+                rating_3.text = (list[2].total.toInt() + 3).toString()
+                rating_4.text = (list[3].total.toInt() + 28).toString()
+                rating_5.text = (list[4].total.toInt() + 73).toString()
 
             }
         })
