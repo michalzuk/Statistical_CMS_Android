@@ -56,4 +56,11 @@
     <string name="field_cannot_be_empty">Field cannot be empty</string>
     <string name="action_canceled">action canceled</string>
     <string name="total_reviews">Total reviews</string>
+    <string name="missing_credentials">Missing Credentials</string>
+    <string name="contact_form_name">Your Name</string>
+    <string name="contact_form_your_email">Your email</string>
+    <string name="contact_form_subject">Subject</string>
+    <string name="contact_form_message_text">Message Text</string>
+    <string name="send_message">Send Message</string>
+    <string name="required_field_is_empty">Required field is empty</string>
 </resources>

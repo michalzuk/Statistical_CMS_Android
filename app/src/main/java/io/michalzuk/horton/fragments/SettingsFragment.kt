@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.webkit.URLUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -64,7 +65,7 @@ class SettingsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        databaseReference.addValueEventListener(object : ValueEventListener {
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 Log.w("p0", "loadPost:onCancelled", p0.toException())
                 Snackbar.make(view!!.findViewById(R.id.fragment_settings), R.string.something_went_wrong, Snackbar.LENGTH_SHORT).show()
@@ -98,12 +99,13 @@ class SettingsFragment : Fragment() {
         val username: String = credentials_username.text.toString().trim()
         val apiKey: String = credentials_api_key.text.toString().trim()
 
-        if (!TextUtils.isEmpty(domain)) {
+        if (URLUtil.isValidUrl(domain) &&!TextUtils.isEmpty(username) && !TextUtils.isEmpty(apiKey)) {
             val id: String = firebaseUser.uid
             val credentials = Credentials(domain, username, apiKey)
             databaseReference.child(id).setValue(credentials)
             Snackbar.make(view!!.findViewById(R.id.fragment_settings), getString(R.string.credentials_added), Snackbar.LENGTH_SHORT).show()
-
+        } else {
+            Snackbar.make(view!!.findViewById(R.id.fragment_settings), getString(R.string.missing_credentials), Snackbar.LENGTH_SHORT).show()
         }
     }
 
@@ -121,7 +123,9 @@ class SettingsFragment : Fragment() {
             override fun onFailure(call: Call<SystemStatus>, t: Throwable) {
                 println("SSS " + call)
                 println("SSSS " + t)
-                Snackbar.make(view!!.findViewById(R.id.fragment_settings), R.string.something_went_wrong, Snackbar.LENGTH_SHORT).show()
+                if (view == fragment_settings) {
+                    Snackbar.make(view!!.findViewById(R.id.fragment_settings), R.string.something_went_wrong, Snackbar.LENGTH_SHORT).show()
+                }
             }
 
             override fun onResponse(call: Call<SystemStatus>, response: Response<SystemStatus>) {
