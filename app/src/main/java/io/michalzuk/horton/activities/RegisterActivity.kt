@@ -43,31 +43,9 @@ class RegisterActivity : AppCompatActivity() {
     private fun registerUser() {
         val email = login_mail.text.toString().trim()
         val password = login_password.text.toString().trim()
-
-        validateRegistration(email, password)
         sign_up_progressbar.visibility = View.VISIBLE
-
-    }
-
-    private fun validateRegistration(email: String, password: String) {
-        when {
-            email.isEmpty() -> {
-                login_mail.error = "Email is required"
-                login_mail.requestFocus()
-            }
-            password.isEmpty() -> {
-                login_password.error = "Password is required"
-                login_password.requestFocus()
-            }
-            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                login_password.error = "Please enter a valid email"
-                login_mail.requestFocus()
-            }
-            password.length < 8 -> {
-                login_password.error = "Minimum password length is equal to 6"
-                login_password.requestFocus()
-            }
-            else -> this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task: Task<AuthResult> ->
+        if (validateRegistration(email, password)) {
+            this.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task: Task<AuthResult> ->
                 when {
                     task.isSuccessful -> {
                         finish()
@@ -79,6 +57,33 @@ class RegisterActivity : AppCompatActivity() {
                     else -> deactivateScreen(getString(R.string.something_went_wrong))
                 }
             }
+        }
+
+    }
+
+    private fun validateRegistration(email: String, password: String) : Boolean {
+        when {
+            email.isEmpty() -> {
+                login_mail.error = "Email is required"
+                login_mail.requestFocus()
+                return false
+            }
+            password.isEmpty() -> {
+                login_password.error = "Password is required"
+                login_password.requestFocus()
+                return false
+            }
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                login_password.error = "Please enter a valid email"
+                login_mail.requestFocus()
+                return false
+            }
+            password.length < 8 -> {
+                login_password.error = "Minimum password length is equal to 6"
+                login_password.requestFocus()
+                return false
+            }
+            else -> return true
         }
     }
 
