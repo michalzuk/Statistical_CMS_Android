@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
 
-interface WooCommerceRequests {
+interface zawierWooCommerceRequests {
 
     @GET("/wp-json/wc/v3/reports/orders/totals/")
     fun getTotalOrders (@Header("Authorization")  authHeader : String)
